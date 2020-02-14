@@ -6,3 +6,5 @@ conda activate pop
 python popwords.py > compare.txt
 cat plot.R | R --vanilla
 ```
+
+![plot](https://i.imgur.com/LuRGZNn.png)
