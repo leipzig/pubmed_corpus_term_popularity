@@ -7,4 +7,4 @@ python popwords.py > compare.txt
 cat plot.R | R --vanilla
 ```
 
-![plot](https://i.imgur.com/LuRGZNn.png)
+![plot](https://i.imgur.com/4JfbJiy.png)
