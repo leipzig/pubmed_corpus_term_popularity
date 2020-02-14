@@ -1,8 +1,19 @@
+#!/usr/bin/env Rscript
+
+library(optparse)
 library(ggplot2)
 library(dplyr)
 library(stringr)
 
-read.table("compare.txt", header = TRUE) %>% dplyr::filter(pubmedFreq>0) %>% dplyr::filter(stringr::str_detect(string=word,pattern='^[^0-9]+$')) -> words
+option_list = list(
+  make_option(c("-f", "--file"), type="character", default="compare.txt", 
+              help="dataset file name", metavar="character")
+); 
+
+opt_parser = OptionParser(option_list=option_list);
+opt = parse_args(opt_parser);
+
+read.table(opt$file, header = TRUE) %>% dplyr::filter(pubmedFreq>0) %>% dplyr::filter(stringr::str_detect(string=word,pattern='^[^0-9]+$')) -> words
 
 ggplot(words, aes(log(corpusFreq), log(pubmedFreq))) +
   geom_point(aes(color=category)) + geom_text(
