@@ -3,7 +3,7 @@ library(ggplot2)
 read.table("compare.txt", header = TRUE)
 words <- read.table("compare.txt", header = TRUE)
 
-ggplot(words, aes(corpusFreq, log(pubmedFreq))) +
+ggplot(words, aes(log(corpusFreq), log(pubmedFreq))) +
   geom_point(aes(label =
                    word)) + geom_text(
                      label = words$word,
